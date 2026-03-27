@@ -1,0 +1,59 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+    border: 1px solid #636583;
+    background-color: #eeeeee;
+    position: relative;
+}
+
+span {
+    margin-left: 10px;
+}
+
+.item {
+    display: flex;
+    gap: 5px;
+    font-size: 15px;
+    padding-left: 10px;
+    align-items: center;
+}
+
+.link-trajectory {
+    position: relative;
+    color: grey;
+
+    .experimental-feature {
+        position: absolute;
+        bottom: -8px;
+        left: 20px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-height: 930px) {
+    :host {
+        gap: 3px;
+    }
+
+    .item {
+        font-size: 12px;
+
+        mat-slide-toggle {
+            transform: scale(0.8);
+        }
+    }
+}
+
+app-tour {
+    position: absolute;
+    top: 10%;
+    left: 10px;
+
+    div {
+        margin: 10px 0px;
+        text-align: left;
+    }
+}

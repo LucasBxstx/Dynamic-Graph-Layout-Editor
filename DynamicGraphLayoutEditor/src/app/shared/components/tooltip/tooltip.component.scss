@@ -1,0 +1,49 @@
+@use '../../../../styles/mixins' as *;
+
+.box {
+    &.left {
+        @include tooltip("230px", "left");
+    }
+
+    &.bottom {
+        @include tooltip("230px", "bottom");
+    }
+
+    &.right {
+        @include tooltip("230px", "right");
+    }
+
+    &.top {
+        @include tooltip("230px", "top");
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        flex-grow: 1;
+
+        .icon {
+            user-select: none;
+            font-size: 13px;
+            background-color: white;
+            border: 1px solid #484b6a;
+            border-radius: 100%;
+            width: 15px;
+            height: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .tooltiptext {
+            &.visible {
+                visibility: visible;
+            }
+
+            &.hidden {
+                visibility: hidden;
+            }
+        }
+    }
+}

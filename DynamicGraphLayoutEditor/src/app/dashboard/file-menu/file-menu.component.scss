@@ -1,0 +1,38 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #636583;
+    gap: 5px;
+    background-color: #eeeeee;
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+    padding: 0 5px 5px 5px;
+
+
+    button {
+        font-size: 10px;
+        width: 40px;
+        height: 40px;
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
+
+app-tour {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    div {
+        margin: 10px 0px;
+        text-align: left;
+    }
+}

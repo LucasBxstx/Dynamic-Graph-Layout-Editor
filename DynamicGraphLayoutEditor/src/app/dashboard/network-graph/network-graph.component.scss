@@ -1,0 +1,22 @@
+:host {
+    border: 1px solid #636583;
+    position: relative;
+}
+
+#chart {
+    background-color: white;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+app-tour {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+
+    div {
+        margin: 10px 0px;
+        text-align: left;
+    }
+}

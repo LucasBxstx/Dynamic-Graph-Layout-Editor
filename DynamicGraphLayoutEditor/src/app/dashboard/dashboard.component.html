@@ -1,0 +1,169 @@
+<div class="modal-overlay-container" [ngClass]="{ isActive: isModalActive }">
+  <router-outlet name="modal" (activate)="onModalOpen()" (deactivate)="onModalClose()"></router-outlet>
+</div>
+
+<div *ngIf="!!(networkDataService.currentNetworkGraphData$ | async)" class="content">
+  <div class="left">
+    <div class="top-row">
+      <app-file-menu></app-file-menu>
+      <app-legend [context]="'status'" [legendData]="statusLegendData$ | async"></app-legend>
+      <app-legend [context]="'location'" [legendData]="locationLegendData$ | async"></app-legend>
+    </div>
+
+    <app-network-graph [nodes]="(networkDataService.currentNetworkGraphData$ | async)!.nodes"
+      [links]="(networkDataService.currentNetworkGraphData$ | async)!.links"
+      [selectedNodeIds]="(networkDataService.selectedNodeIds$ | async) ?? []"
+      [selectedLinkIds]="(networkDataService.selectedLinkIds$ | async) ?? []"
+      [affectedLinkIds]="(networkDataService.affectedLinkIds$ | async) ?? []"
+      [affectedNodeIds]="(networkDataService.affectedNodeIds$ | async) ?? []"
+      [stateData]="(networkDataService.networkData$ | async)!.states"
+      [locationData]="(networkDataService.networkData$ | async)!.locations" [initialGraphLayout]="
+        networkDataService.currentInitialNetworkData$ | async
+      " [nodeHistoryPaths]="(networkDataService.nodeHistoryPaths$ | async) ?? []"
+      [nodeFuturePoints]="(networkDataService.nodeFuturePoints$ | async) ?? []"
+      [linkHistory]="(networkDataService.linkHistory$ | async) ?? []" [nodeWaitingToBePlaced]="
+        networkDataService.nodeWaitingToBePlaced$ | async
+      " [selectMode]="(editOptionsService.selectionMode$ | async) ?? 'nothing'" [moveNodesActive]="
+        (editOptionsService.editingMode$ | async) === 'move-node'
+      " [showNodeNames]="(slideToggleService.showNodeNames$ | async) === true" [hideIsolatedNodes]="
+        (slideToggleService.hideNodesWithoutContact$ | async) === true
+      " [showInitialGraphLayout]="
+        (slideToggleService.showInitialLayout$ | async) === true
+      " [colorNodesAndLinksByLocation]="
+        (slideToggleService.colorNodesAndLinksByLocation$ | async) === true
+      " [showNodeTrajectory]="
+        (slideToggleService.showNodeTrajectory$ | async) === true
+      " [showLinkTrajectory]="
+        (slideToggleService.showLinkTrajectory$ | async) === true
+      ">
+    </app-network-graph>
+
+    <div class="bottom-left">
+      <app-timeline [numSteps]="
+          (networkDataService.numberOfRenderedTimeSteps$ | async) ?? 1
+        " [currentPointerPosition]="
+          (networkDataService.currentPointInTime$ | async) ?? 1
+        " [networkData]="networkDataService.networkData$ | async"
+        [projectSettings]="networkDataService.projectSettings$ | async" (pointerPositionChangedThroughSlider)="
+          networkDataService.setTimePoint($event)
+        " (frameClicked)="networkDataService.setTimePoint($event)">
+      </app-timeline>
+
+      <div *ngIf="(editOptionsService.editingMode$ | async) === 'nothing'" class="event-lines mid-context" [ngClass]="{
+          currentlyShown:
+            (editOptionsService.editingMode$ | async) === 'nothing'
+        }">
+        <app-event-line [eventType]="'status'" [numSteps]="
+            (networkDataService.numberOfRenderedTimeSteps$ | async) ?? 1
+          " [eventPoints]="
+            (networkDataService.timeLineStatusEvents$ | async) ?? []
+          " [states]="(networkDataService.networkData$ | async)?.states ?? []"
+          (eventClicked)="networkDataService.setTimePoint($event)">
+        </app-event-line>
+
+        <app-event-line [eventType]="'contact'" [numSteps]="
+            (networkDataService.numberOfRenderedTimeSteps$ | async) ?? 1
+          " [eventPoints]="
+            (networkDataService.timeLineContactEvents$ | async) ?? []
+          " [locations]="
+            (networkDataService.networkData$ | async)?.locations ?? []
+          " (eventClicked)="networkDataService.setTimePoint($event)">
+        </app-event-line>
+      </div>
+      <app-keyframe-line class="mid-context" *ngIf="(editOptionsService.editingMode$ | async) === 'move-node'"
+        [ngClass]="{
+          currentlyShown:
+            (editOptionsService.editingMode$ | async) === 'move-node'
+        }" [numSteps]="
+          (networkDataService.numberOfRenderedTimeSteps$ | async) ?? 1
+        " [keyFrames]="(networkDataService.currentNodeKeyFrames$ | async) ?? []" [currentSelectedEditingKeyFrameIds]="
+          (networkDataService.currentSelectedEditingKeyFrames$ | async) ?? []
+        " [currentPointerPosition]="
+          (networkDataService.currentPointInTime$ | async) ?? 1
+        " [numberOfSelectedNodes]="
+          ((networkDataService.selectedNodeIds$ | async) ?? []).length
+        " (keyFrameClicked)="
+          networkDataService.selectPositionKeyframe(
+            $event.timePoint,
+            $event.event.ctrlKey
+          )
+        " (keyFramesSelected)="networkDataService.onKeyFramesSelect($event, true)"
+        (keyframesMoved)="networkDataService.moveSelectedKeyframes($event)">
+      </app-keyframe-line>
+
+      <app-keyframe-block-line class="mid-context" *ngIf="
+          (editOptionsService.editingMode$ | async) === 'change-link-duration'
+        " [ngClass]="{
+          currentlyShown:
+            (editOptionsService.editingMode$ | async) === 'change-link-duration'
+        }" [type]="'link-duration'" [keyFrameBlocks]="
+          (networkDataService.currentLinkDurationKeyFrameBlock$ | async) ?? []
+        " [numSteps]="
+          (networkDataService.numberOfRenderedTimeSteps$ | async) ?? 1
+        " [networkData]="networkDataService.networkData$ | async"
+        [projectSettings]="networkDataService.projectSettings$ | async" [selectedKeyframeBlockIds]="
+          (networkDataService.currentSelectedKeyframeBlocks$ | async) ?? []
+        " (keyframeBlockClicked)="
+          networkDataService.onKeyFrameBlockSelect(
+            $event.keyframeId,
+            $event.holdControl
+          )
+        " (keyframeBlockMoved)="
+          networkDataService.moveSelectedLinkDurationKeyframeBlock(
+            $event.offset
+          )
+        " (changedDurationOfKeyframeBlock)="
+          networkDataService.changeLinkDuration(
+            $event.startFrame,
+            $event.endFrame
+          )
+        ">
+      </app-keyframe-block-line>
+
+      <app-keyframe-block-line class="mid-context" [type]="'state'" [ngClass]="{
+          currentlyShown:
+            (editOptionsService.editingMode$ | async) ===
+            'edit-node-health-state'
+        }" *ngIf="
+          (editOptionsService.editingMode$ | async) === 'edit-node-health-state'
+        " [keyFrameBlocks]="
+          (networkDataService.currentHealthStatusKeyFrameBlocks$ | async) ?? []
+        " [numSteps]="
+          (networkDataService.numberOfRenderedTimeSteps$ | async) ?? 1
+        " [networkData]="networkDataService.networkData$ | async"
+        [projectSettings]="networkDataService.projectSettings$ | async" [selectedKeyframeBlockIds]="
+          (networkDataService.currentSelectedKeyframeBlocks$ | async) ?? []
+        " [stateData]="(networkDataService.networkData$ | async)?.states ?? []" (keyframeBlockClicked)="
+          networkDataService.onKeyFrameBlockSelect(
+            $event.keyframeId,
+            $event.holdControl
+          )
+        " (keyframeBlockMoved)="
+          networkDataService.moveSelectedStatusKeyframeBlocks($event.offset)
+        " (changedDurationOfKeyframeBlock)="
+          networkDataService.changeStatusDuration(
+            $event.keyframeId,
+            $event.startFrame,
+            $event.endFrame
+          )
+        ">
+      </app-keyframe-block-line>
+
+      <app-playback-control></app-playback-control>
+
+      <app-tour *ngIf="(tourService.currentStage$ | async) === 'event-lines'" [displaySpot]="'top'">
+        <div>This section displays infection and contact events as points along a timeline, marking the moment they
+          occur.</div>
+        <div>Each infection event represents a change in a patient's infection status, while each contact event marksthe
+          beginning of an interaction between patients. Clicking on a point takes you directly to the exact time the
+          event occurred.</div>
+      </app-tour>
+    </div>
+
+
+  </div>
+  <div class="right">
+    <app-toggle-menu></app-toggle-menu>
+    <app-edit-options></app-edit-options>
+  </div>
+</div>

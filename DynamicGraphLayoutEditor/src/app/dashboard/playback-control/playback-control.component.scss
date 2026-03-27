@@ -1,0 +1,57 @@
+:host {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    button {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+
+.input-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .x {
+        position: absolute;
+        left: 25px;
+        top: 13px;
+
+    }
+
+    input {
+        width: 100px;
+        padding-left: 35px;
+    }
+}
+
+app-tour {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+
+    div {
+        margin: 10px 0px;
+        text-align: left;
+    }
+}

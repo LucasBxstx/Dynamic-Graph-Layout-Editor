@@ -1,0 +1,57 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #636583;
+    gap: 5px;
+    position: relative;
+    padding-left: 20px;
+    background-color: #eeeeee;
+}
+
+.legend-data {
+    margin-bottom: 5px;
+    margin-top: -5px;
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2px;
+
+    &.two-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+
+        .color {
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            border: 1px solid black;
+        }
+    }
+}
+
+.settings {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+app-tour {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    div {
+        margin: 10px 0px;
+        text-align: left;
+    }
+}

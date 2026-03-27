@@ -1,0 +1,21 @@
+<div class="options">
+    <button (click)="networkDataService.firstTimeStep()" title="start"><img src="assets/icons/start.svg"></button>
+    <button [disabled]="(disablePreviousTimeStep$ | async) === true" (click)="networkDataService.previousTimeStep()"
+        title="previous time step"><img src="assets/icons/one-back.svg"></button>
+    <button (click)="onPausePlayButtonClick()" title="pause / play"><img
+            [src]="isPlayingAnimation ? 'assets/icons/pause.svg': 'assets/icons/play.svg'"></button>
+    <button [disabled]="(disableNextTimeStep$ | async) === true" (click)="networkDataService.nextTimeStep()"
+        title="next time step"><img src="assets/icons/one-fore.svg"></button>
+    <button (click)="networkDataService.lastTimeStep()" title="end"><img src="assets/icons/end.svg"></button>
+    <div class="input-container">
+        <input placeholder="x1" type="number" [(ngModel)]="playBackSpeed" min="0.25" step="0.25"
+            (change)="changePlayBackSpeed()">
+        <div class="x">x</div>
+    </div>
+</div>
+
+<app-tour *ngIf="(tourService.currentStage$ | async) === 'playback-control'" [displaySpot]="'top'">
+    <div>The playback options allow you to control the graph animation.</div>
+    <div>You can start or stop the animation, jump to the beginning or end, and step through it frame by frame.
+        Additionally, you can adjust the playback speed.</div>
+</app-tour>

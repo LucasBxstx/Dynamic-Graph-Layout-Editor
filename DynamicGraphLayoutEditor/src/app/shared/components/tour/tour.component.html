@@ -1,0 +1,18 @@
+<div class="box" [ngClass]="displaySpot">
+    <div class="tooltip">
+        <div class="tooltiptext">
+            <div class="close" (click)="tourService.stopTour()">x</div>
+            <div class="title">{{tourService.currentStage$ | async | tourStage}}</div>
+
+            <ng-content></ng-content>
+
+            <div class="row">
+                <button *ngIf="(tourService.currentIndex |async) !== 1"
+                    (click)="tourService.previourTourElement()">Previous</button>
+                <button (click)="tourService.nextTourElement()">{{(tourService.isLastStage$ |async) === true ?
+                    'Complete' :
+                    'Next'}}</button>
+            </div>
+        </div>
+    </div>
+</div>

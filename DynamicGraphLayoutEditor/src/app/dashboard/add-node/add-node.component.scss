@@ -1,0 +1,57 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 60vw;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    position: relative;
+
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .limitation {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+        .title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            align-self: flex-start;
+            margin-left: 7px;
+        }
+
+        .input-description {
+            align-self: flex-start;
+            margin-left: 7px;
+            margin-bottom: -10px;
+        }
+
+        input {
+            margin-bottom: 15px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 300px;
+        }
+    }
+}

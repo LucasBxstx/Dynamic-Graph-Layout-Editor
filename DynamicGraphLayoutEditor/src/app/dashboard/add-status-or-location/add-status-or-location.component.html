@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="close" (click)="closeWindow()">x</div>
+    <div class="limitation">
+        <span class="title">Add {{context === 'status' ? 'Status' : 'Location'}}</span>
+        <span class="input-description">Name</span>
+        <input [(ngModel)]="name">
+
+        <span class="input-description">Color</span>
+        <div class="row">
+            <div class="color" [style.background]="color"></div>
+            <button [(colorPicker)]="color" [cpOutputFormat]="'hex'">Pick a color</button>
+        </div>
+
+        <button [disabled]="name === '' || color === ''" (click)="add()">Add {{context === 'status' ? 'Status' :
+            'Location'}}</button>
+    </div>
+</div>

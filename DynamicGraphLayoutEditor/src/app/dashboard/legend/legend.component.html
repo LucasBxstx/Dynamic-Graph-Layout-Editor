@@ -1,0 +1,24 @@
+<span>{{context === 'status' ? 'Health States':'Locations'}}</span>
+
+<div class="legend-data" *ngIf="!!legendData" [ngClass]="{'two-columns': displayTwoColumns}">
+    <div *ngFor="let data of legendData" class="row">
+        <div class="color" [ngStyle]="{'background-color': data.color}"></div>
+        <span>{{data.name}}</span>
+    </div>
+</div>
+
+<button class="settings" (click)="navigateToEditingSettings()"
+    [title]="context === 'status' ? 'Add a Status':'Add a Location'">+</button>
+
+<app-tour *ngIf="((tourService.currentStage$ | async) === 'legend-health-states' ) && context === 'status'"
+    [displaySpot]="'bottom'">
+    <div>The health state legend shows all possible patient infection statuses within the graph. </div>
+    <div>You can extend the list by adding new states as needed.</div>
+</app-tour>
+
+<app-tour *ngIf="((tourService.currentStage$ | async) === 'legend-locations' ) && context === 'location'"
+    [displaySpot]="'bottom'">
+    <div>This legend shows the possible locations patients can be located at. </div>
+    <div>You can extend the list by adding new locations. To display the location of nodes and links, activate the
+        toggle "color by location" in the toggle menu.</div>
+</app-tour>

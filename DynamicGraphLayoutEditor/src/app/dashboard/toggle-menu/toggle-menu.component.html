@@ -1,0 +1,63 @@
+<span>Toggle Menu</span>
+<div class="item">
+    <mat-slide-toggle [checked]="(slideToggleService.showNodeNames$ |async)"
+        (change)="slideToggleService.onToggleShowNodeNames()">
+    </mat-slide-toggle>
+    <span>Show Node Names</span>
+</div>
+<div class="item">
+    <mat-slide-toggle [checked]="(slideToggleService.hideNodesWithoutContact$ |async)"
+        (change)="slideToggleService.onToggleHideNodesWithoutContact()">
+    </mat-slide-toggle>
+    <span>Hide isolated Nodes</span>
+    <app-tooltip [tooltipText]="'Nodes that do not have a link at the moment are hidden'" [displayBehavior]="'left'">
+    </app-tooltip>
+</div>
+<div class="item">
+    <mat-slide-toggle [checked]="(slideToggleService.showInitialLayout$ |async)"
+        (change)="slideToggleService.onToggleShowInitialLayout()">
+    </mat-slide-toggle>
+    <span>Show initial Layout</span>
+    <app-tooltip
+        [tooltipText]="'Displays the initially generated layout by MultiDynNos in less opacity. Accordingly it only works when there was generated an initial layout'"
+        [displayBehavior]="'left'">
+    </app-tooltip>
+</div>
+<div class="item">
+    <mat-slide-toggle [checked]="(slideToggleService.colorNodesAndLinksByLocation$ |async)"
+        (change)="slideToggleService.onToggleColorNodesAndLinksByLocation()">
+    </mat-slide-toggle>
+    <span>Color by Location</span>
+    <app-tooltip [tooltipText]="'Nodes and Links are colored by their current Location'" [displayBehavior]="'left'">
+    </app-tooltip>
+</div>
+<div class="item">
+    <mat-slide-toggle [checked]="(slideToggleService.showNodeTrajectory$ |async)"
+        (change)="slideToggleService.onToggleShowNodeTrajectory()">
+    </mat-slide-toggle>
+    <span>Show Node Trajectory</span>
+    <app-tooltip
+        [tooltipText]="'The nodes’ trajectories are visualized, with their past movements shown as continuous paths colored according to the infection status at each point in time. Future movements are represented by dotted projections'"
+        [displayBehavior]="'left'">
+    </app-tooltip>
+</div>
+<div class="item">
+    <mat-slide-toggle [checked]="(slideToggleService.showLinkTrajectory$ |async)"
+        (change)="slideToggleService.onToggleShowLinkTrajectory()"
+        [disabled]="(slideToggleService.showNodeTrajectory$ | async) === false">
+    </mat-slide-toggle>
+    <div class="link-trajectory">
+        <span>Show Link Trajectory</span>
+        <div class="experimental-feature">*experimental feature</div>
+    </div>
+    <app-tooltip
+        [tooltipText]="'The link trajectories are visualized by drawing only the links that have occurred up to the current time'"
+        [displayBehavior]="'left'">
+    </app-tooltip>
+
+</div>
+
+<app-tour *ngIf="(tourService.currentStage$ |async) === 'toggle-menu'" [displaySpot]="'left'">
+    <div>Use the toggle menu to adjust visual settings and gain deeper analytical insights into disease transmission.
+    </div>
+</app-tour>

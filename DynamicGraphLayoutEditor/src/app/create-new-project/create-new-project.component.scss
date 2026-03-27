@@ -1,0 +1,76 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 60vw;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    position: relative;
+
+    .home {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .home:hover {
+        text-decoration: underline;
+    }
+
+    .limitation {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+
+        
+        
+        .title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .input-description {
+            align-self: flex-start;
+            margin-left: 7px;
+            margin-bottom: -7px;
+        }
+
+        .date-picker {
+            margin-top: 5px;
+            align-self: flex-start;
+
+
+            input {
+                margin: 0;
+            }
+
+            .number-of-days {
+                margin-left: 10px;
+            }
+        }
+
+        input {
+            margin-bottom: 15px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 300px;
+        }
+    }
+}

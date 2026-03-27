@@ -1,0 +1,6 @@
+<div class="box" [ngClass]="displaySpot" (mouseleave)="showTooltip = false">
+    <div class="tooltip">
+        <span class="icon" (mouseenter)="showTooltip = true">?</span>
+        <div class="tooltiptext" [ngClass]="{visible: showTooltip, hidden: !showTooltip}">{{ tooltipText }}</div>
+    </div>
+</div>

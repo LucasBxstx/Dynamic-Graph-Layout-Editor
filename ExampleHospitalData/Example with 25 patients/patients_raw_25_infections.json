@@ -1,0 +1,233 @@
+[
+  {
+    "id": "113749",
+    "changes": [
+      {
+        "timestamp": 1290244200000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "75438",
+    "changes": [
+      {
+        "timestamp": 1311410520000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "84682",
+    "changes": [
+      {
+        "timestamp": 1312540800000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "73848",
+    "changes": [
+      {
+        "timestamp": 1318156620000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "68475",
+    "changes": [
+      {
+        "timestamp": 1322298300000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1328778420000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1329992340000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1368009480000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1368523680000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "172167",
+    "changes": [
+      {
+        "timestamp": 1324809060000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "67867",
+    "changes": [
+      {
+        "timestamp": 1327137540000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1328778480000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1329400020000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1330587060000,
+        "status": "Carrier"
+      }
+    ]
+  },
+  {
+    "id": "63842",
+    "changes": [
+      {
+        "timestamp": 1328085300000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1329991560000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1330590480000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1331371200000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1334037120000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1334223960000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "76101",
+    "changes": [
+      {
+        "timestamp": 1328698860000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1328780220000,
+        "status": "Carrier"
+      }
+    ]
+  },
+  {
+    "id": "63104",
+    "changes": [
+      {
+        "timestamp": 1328779860000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1329384060000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1329395160000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1329991620000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1330588080000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1331283600000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1331802720000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1333790640000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1334217300000,
+        "status": "Carrier"
+      }
+    ]
+  },
+  {
+    "id": "64716",
+    "changes": [
+      {
+        "timestamp": 1328873640000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1329991800000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "70448",
+    "changes": [
+      {
+        "timestamp": 1329394020000,
+        "status": "Carrier"
+      }
+    ]
+  },
+  {
+    "id": "62411",
+    "changes": [
+      {
+        "timestamp": 1329996660000,
+        "status": "Diseased"
+      },
+      {
+        "timestamp": 1331205000000,
+        "status": "Carrier"
+      },
+      {
+        "timestamp": 1331977200000,
+        "status": "Diseased"
+      }
+    ]
+  },
+  {
+    "id": "175082",
+    "changes": [
+      {
+        "timestamp": 1331800980000,
+        "status": "Carrier"
+      }
+    ]
+  },
+  {
+    "id": "179734",
+    "changes": [
+      {
+        "timestamp": 1397027820000,
+        "status": "Diseased"
+      }
+    ]
+  }
+]

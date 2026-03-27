@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="close" (click)="closeWindow()">x</div>
+  <div class="limitation">
+    <span class="title">Delete Objects</span>
+    <span *ngIf="question1" class="questions">{{ question1 }}</span>
+    <span *ngIf="question2" class="questions">{{ question2 }}</span>
+
+    <div class="row">
+      <button (click)="closeWindow()">Cancel</button>
+      <button class="delete" (click)="deleteObjects()">Delete</button>
+    </div>
+  </div>
+</div>

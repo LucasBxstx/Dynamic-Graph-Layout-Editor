@@ -1,0 +1,29 @@
+<span *ngIf="!!(networkDataService.projectSettings$ | async)">
+  Opened Project:
+  {{ (networkDataService.projectSettings$ | async)!.projectTitle }}
+</span>
+
+<div class="row">
+  <button (click)="navigateToLandingPage()" title="home">
+    <img src="assets/icons/home.svg">
+  </button>
+  <button (click)="navigateToProjectSettings()" title="settings">
+    <img src="assets/icons/settings.svg">
+  </button>
+  <button (click)="networkDataService.saveEditingProgress()" title="save">
+    <img src="assets/icons/save.svg">
+  </button>
+  <button (click)="networkDataService.revertLastChange()" title="undo"
+    [disabled]="(networkDataService.canRevertLastChange$ | async) === false">
+    <img src="assets/icons/undo.svg">
+  </button>
+  <button (click)="tourService.startTour()" title="start onboarding tour">
+    <img src="assets/icons/lamp-light.svg">
+  </button>
+</div>
+
+<app-tour *ngIf="(tourService.currentStage$ |async) === 'file-menu'" [displaySpot]="'bottom'">
+  <div>You can manage your project from here.</div>
+  <div>This includes navigating back to the landing page to create or open projects. You can also edit project settings,
+    save your work, and revert any unwanted changes.</div>
+</app-tour>

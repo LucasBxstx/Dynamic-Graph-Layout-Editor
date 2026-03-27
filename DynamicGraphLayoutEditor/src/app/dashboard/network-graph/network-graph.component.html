@@ -1,0 +1,7 @@
+<div id="chart"></div>
+<app-tour *ngIf="(tourService.currentStage$ | async) === 'network-graph'" [displaySpot]="'bottom'">
+    <div>The network graph displays nodes and links, representing patients and their contacts.</div>
+    <div>You can zoom, pan, and navigate through the graph. Click on nodes or links to select them, and hold the
+        CTRL key to select multiple elements.
+    </div>
+</app-tour>

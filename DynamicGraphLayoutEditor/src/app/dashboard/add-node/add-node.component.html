@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="close" (click)="closeWindow()">x</div>
+    <div class="limitation">
+        <span class="title">Add a Node</span>
+        <span class="input-description">Node Name</span>
+        <input [(ngModel)]="editingName" (keyup.enter)="addNode()">
+        <button (click)="addNode()">Add Node</button>
+    </div>
+</div>

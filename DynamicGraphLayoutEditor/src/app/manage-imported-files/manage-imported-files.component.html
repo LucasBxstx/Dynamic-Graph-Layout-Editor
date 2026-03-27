@@ -1,0 +1,37 @@
+<div class="container">
+    <div *ngIf="usecase === 'create'" class="home" (click)="navigateToHome()">Back to Home</div>
+    <div class="limitation">
+
+        <span class="title">{{usecase === 'create' ?'Import Files':'Manage imported Files'}}</span>
+
+        <span class="input-description">1. Healthcare dataset</span>
+        <div class="row">
+            <button (click)="healthcareFileInput.click()">Select file</button>
+            <span>Selected file:{{selectedHealthcareFileName ?? 'none'}}</span>
+            <input type="file" #healthcareFileInput style="display: none"
+                (change)="onJsonFileSelect($event, 'healthcare')" accept=".json" />
+        </div>
+
+        <span class="input-description">2. Infect status dataset</span>
+        <div class="row">
+            <button (click)="infectStatusFileInput.click()">Select file</button>
+            <span>Selected file:{{selectedInfectionsFileName ?? 'none'}}</span>
+            <input type="file" #infectStatusFileInput style="display: none"
+                (change)="onJsonFileSelect($event, 'infections')" accept=".json" />
+        </div>
+
+        <span class="input-description">3. MultiDynNos layout</span>
+        <div class="row">
+            <button (click)="multiDynNosFileInput.click()">Select file</button>
+            <span>Selected files:{{selectedMultiDynNosFileNames ? selectedMultiDynNosFileNames[0] + ' and other '+
+                (selectedMultiDynNosFileNames.length- 2) + ' files' :'none'}}</span>
+            <input type="file" #multiDynNosFileInput style="display: none" (change)="onMultiDynNosFileSelected($event)"
+                accept=".gml" multiple />
+        </div>
+
+        <button class="save-button" (click)="navigateToDashboard()"
+            [disabled]="!selectedHealthcareFileName || !selectedInfectionsFileName || !selectedMultiDynNosFileNames">
+            {{usecase === 'create' ?'Create Project':'SaveChanges'}}
+        </button>
+    </div>
+</div>

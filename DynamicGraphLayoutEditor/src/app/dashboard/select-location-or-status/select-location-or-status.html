@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="close" (click)="closeWindow()">x</div>
+    <div class="limitation">
+        <span class="title">
+            {{context === 'select-location' ? 'Edit the Link Location' : 'Add a new Health Status'}}
+        </span>
+
+        <div class="body" *ngIf="context === 'select-location'">
+            <span class="select">
+                Select a Location that will be assigned to all currently selected Links
+            </span>
+            <div *ngFor="let location of locations$ | async" class="row"
+                [ngClass]="{selected: selectedLocationId === location.id}" (click)="selectedLocationId = location.id">
+                <div class="color" [ngStyle]="{'background-color': location.color}"></div>
+                <span>{{location.name}}</span>
+            </div>
+            <button (click)="setNewLocation()" [disabled]="!selectedLocationId">Save Changes</button>
+        </div>
+        <div class="body" *ngIf="context === 'select-status'">
+            <span class="select">
+                Select a Status that will be assigned to the selected Node
+            </span>
+            <div *ngFor="let status of states$ | async" class="row"
+                [ngClass]="{selected: selectedStatusId === status.id}" (click)="selectedStatusId = status.id">
+                <div class="color" [ngStyle]="{'background-color': status.color}"></div>
+                <span>{{status.name}}</span>
+            </div>
+            <button (click)="addNewStatus()" [disabled]="!selectedStatusId">
+                Add new Health Status
+            </button>
+        </div>
+    </div>
+</div>

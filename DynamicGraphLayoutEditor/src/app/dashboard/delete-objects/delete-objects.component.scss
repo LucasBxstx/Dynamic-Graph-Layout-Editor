@@ -1,0 +1,63 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 60vw;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    position: relative;
+
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .limitation {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+        .title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            align-self: start;
+            margin-left: 7px;
+        }
+
+        .questions {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+
+        .delete {
+            background-color: rgb(109, 14, 14);
+        }
+
+
+        button {
+            margin-top: 20px;
+            width: 300px;
+        }
+    }
+}

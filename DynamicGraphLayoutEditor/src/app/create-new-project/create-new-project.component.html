@@ -1,0 +1,40 @@
+<div class="container">
+    <div *ngIf="usecase ==='create'" class="home" (click)="navigateToLanding()">Back to Home</div>
+    <div *ngIf="usecase === 'edit'" class="home" (click)="navigateToDashboard()">Back to Dashboard</div>
+    <div class="limitation">
+
+        <span class="title">{{usecase === 'create' ?'Create a new Project':'Change Project Settings'}}</span>
+
+        <span class="input-description">Project title</span>
+        <input type="text" [(ngModel)]="projectTitle" placeholder="title">
+
+        <span class="input-description">Timespan</span>
+        <div class="date-picker">
+            <mat-form-field>
+                <mat-label>Enter a timespan</mat-label>
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker" [disabled]="usecase === 'edit'">
+                    <input class="datepicker" matStartDate formControlName="start" placeholder="Start date">
+                    <input class="datepicker" matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+
+            <span class="number-of-days" *ngIf="numberOfDays !== 0">Number of Days: {{numberOfDays}}</span>
+        </div>
+
+
+        <span class="input-description">Animation Time for one day (seconds)</span>
+        <input type="number" placeholder="e.g. 4" [(ngModel)]="animationTimeForOneDay" (change)="onInputChanges()">
+
+        <span class="input-description">Total animation duration (seconds)</span>
+        <input type="number" placeholder="e.g. 30" [(ngModel)]="totalAnimationDuration" (change)="onDurationChanges()">
+
+        <span class="input-description">Frames per second (fps)</span>
+        <input type="number" placeholder="e.g. 24" [(ngModel)]="framesPerSecond" (change)="onInputChanges()">
+
+        <button [disabled]="projectTitle.length <= 0" (click)="onSaveChanges()">
+            {{usecase === 'create' ?'CreateProject':'Save Changes'}}
+        </button>
+    </div>
+</div>

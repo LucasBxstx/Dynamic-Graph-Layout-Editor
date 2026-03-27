@@ -1,0 +1,149 @@
+<div class="block select-objects">
+  <span>Select Objects</span>
+  <div class="row">
+    <button (click)="editOptionsServices.onClickSelectObjects()" [ngClass]="{
+      selected: (editOptionsServices.selectionMode$ | async) === 'objects'
+    }">
+      Select Nodes & Links
+    </button>
+    <app-tooltip [tooltipText]="'Select nodes and links by pressing CTRL and drawing a selection rectangle'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="editOptionsServices.onClickSelectNodes()" [ngClass]="{
+      selected: (editOptionsServices.selectionMode$ | async) === 'nodes'
+    }">
+      Select Nodes
+    </button>
+    <app-tooltip [tooltipText]="'Select nodes by pressing STRG and drawing a selection rectangle'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="editOptionsServices.onClickSelectLinks()" [ngClass]="{
+      selected: (editOptionsServices.selectionMode$ | async) === 'links'
+    }">
+      Select Links
+    </button>
+    <app-tooltip [tooltipText]="'Select links by pressing STRG and drawing a selection rectangle'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+</div>
+
+<div class="block add-objects">
+  <span>Add Objects</span>
+  <div class="row">
+    <button (click)="addNode()">Add Node</button>
+    <app-tooltip [tooltipText]="'Place the node where you want by right-clicking. It follows the cursor position'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="addLink()" [disabled]="
+      ((networkDataService.selectedNodeIds$ | async) ?? []).length < 2">
+      Add Link
+    </button>
+    <app-tooltip [tooltipText]="'Select the nodes between which you want to add links'" [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+</div>
+
+<div class="block edit-objects">
+  <span>Edit Objects</span>
+  <div class="row">
+    <button (click)="editOptionsServices.onClickMoveNodes()" [ngClass]="{
+      selected: (editOptionsServices.editingMode$ | async) === 'move-node'}">
+      Move Node
+    </button>
+    <app-tooltip [tooltipText]="'Select the node(s) that you want to move and set keyframes for their position'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="editOptionsServices.onClickEditNodeHealthState()" [ngClass]="{
+      selected:
+        (editOptionsServices.editingMode$ | async) === 'edit-node-health-state' }">
+      Edit Node Health State
+    </button>
+    <app-tooltip
+      [tooltipText]="'Select the node whose health status you want to change. Click on the colored block to select it. Then you can move the block itsself or the edges by drag and drop'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="editOptionsServices.onClickChangeLinkDuration()" [ngClass]="{
+      selected:
+        (editOptionsServices.editingMode$ | async) === 'change-link-duration'}">
+      Edit Link Duration
+    </button>
+    <app-tooltip
+      [tooltipText]="'Select the link(s) whose duration you want to modify. Click on a colored block to select it. You can adjust the duration by dragging the block itself or its edges. If multiple links are selected, only the duration of the last selected link is displayed. However, any changes you make will apply to all selected links.'"
+      [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="editLinkLocation()" [ngClass]="{
+      selected:
+        (editOptionsServices.editingMode$ | async) === 'change-link-location'
+    }" [disabled]="(networkDataService.selectedLinkIds$ | async)?.length === 0">
+      Edit Link Location
+    </button>
+    <app-tooltip [tooltipText]="'Select the link(s) whose location you want to change'" [displayBehavior]="'left'">
+    </app-tooltip>
+  </div>
+</div>
+
+<div class="block delete-objects">
+  <span>Delete Objects</span>
+  <div class="row">
+    <button (click)="deleteObjects()" [disabled]="(disableDeleteObjects$ | async) === true">
+      Delete Object
+    </button>
+    <app-tooltip [tooltipText]="'Deletes all selected nodes and links'">
+    </app-tooltip>
+  </div>
+
+</div>
+
+<div class="block edit-keyframes">
+  <span>Edit Keyframes</span>
+  <div class="row">
+    <button (click)="addKeyframe()" [disabled]="(disableAddKeyframeButton$ | async) === true">
+      Add Keyframe
+    </button>
+    <app-tooltip [tooltipText]="'Adds a new keyframe at the current time step'">
+    </app-tooltip>
+  </div>
+
+  <div class="row">
+    <button (click)="deleteKeyframes()" [disabled]="(disableDeleteKeyframeButton$ | async) === true">
+      Delete Selected Keyframes
+    </button>
+    <app-tooltip [tooltipText]="'Deletes the selected keyframes'">
+    </app-tooltip>
+  </div>
+
+</div>
+
+<app-tour *ngIf="(tourService.currentStage$ |async) === 'edit-options'" [displaySpot]="'left'">
+  <div>This section provides various editing options for modifying the graph layout.</div>
+  <div>To edit nodes and links, you must first select them—either by clicking individually or by drawing a selection
+    rectangle.</div>
+  <div>You can expand the graph by adding new nodes and links.</div>
+  <div>Nodes can be moved using keyframes. When a node has a position keyframe in a frame, its position is fixed.
+    Between keyframes, the position is interpolated. Keyframes can be dragged to new positions or deleted.</div>
+  <div>You can adjust the duration of links by setting their start and end frames, or by moving their duration
+    keyframe block.</div>
+  <div>The same applies to a node’s health status. You can adjust each status keyframe block’s duration and add new
+    blocks with the desired health state.</div>
+  <div>Finally, you can delete selected nodes and links.</div>
+</app-tour>
