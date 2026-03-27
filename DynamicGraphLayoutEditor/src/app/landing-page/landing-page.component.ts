@@ -72,4 +72,8 @@ export class LandingPageComponent implements OnInit {
 
       reader.readAsText(file);
    }
+
+   public downloadExampleProject() {
+       window.open('https://drive.google.com/file/d/1vDZjjgv_o--GrhXUoinjazl39br6MSIJ/view?usp=sharing', '_blank');
+   }
 }
