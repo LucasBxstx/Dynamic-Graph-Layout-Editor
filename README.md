@@ -22,6 +22,7 @@ This project solves that by enabling:
 - **continuous time exploration**
 - **interactive layout refinement**
 
+<br></br>
 ## Features
 
 ### Intelligent Layout + Human Refinement
@@ -73,10 +74,12 @@ This project solves that by enabling:
 #### Layout Comparison
 - Compare edited layout with original algorithm output
 
+<br></br>
 ## Tech Stack
 - **Frontend:** Angular 17 + D3.js  
 - **Backend Tool:** Java (MultiDynNos adjustment)
 
+<br></br>
 ## Installation
 
 ### Requirements
@@ -140,6 +143,7 @@ See the ReadMe for MultiDynNos in /Edited MultiDynNos
 
    The final application bundle is found in the dist folder
 
+<br></br>
 ## Contributing
 
 1. Fork the repository.
