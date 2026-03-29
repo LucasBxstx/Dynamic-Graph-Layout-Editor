@@ -1,21 +1,12 @@
 # Dynamic Graph Layout Editor
 
-## Purpose
 
-**Dynamic Graph Layout Editor** is a web application that enables users to edit a network graph over a temporal axis with interactive options.
+An interactive web application for **editing and analyzing dynamic graphs** with a focus on **disease transmission and contact tracing**.
 
-## Technical Infrastructure
+This project combines **automated graph layout algorithms** with **interactive editing**, enabling precise and intuitive exploration of dynamic graphs over time.
 
-The application consists of a Angular 17 frontend for the web tool and a Java console tool for an optimized network layout using the MultiDynNos algorithm.
+<img width="1442" height="657" alt="image" src="https://github.com/user-attachments/assets/61a4aa2c-492e-4e7b-a9d0-59a95ded9df4" />
 
-
-
-
-# Dynamic Graph Layout Editor
-
-An interactive web application for **editing and analyzing dynamic graphs graphs** with a focus on **disease transmission and contact tracing**.
-
-This project combines **automated graph layout algorithms** with **interactive editing**, enabling precise and intuitive exploration of dynamic networks over time.
 
 ## Background
 
@@ -148,10 +139,6 @@ See the ReadMe for MultiDynNos in /Edited MultiDynNos
    ```
 
    The final application bundle is found in the dist folder
-
-## Usage
-
-The user can load contact and infection data into the Dynamic Graph Layout Editor. For an initial layout of the network diagram, the user can use the generated Layouts in /ExampleHospitalData. Once these 3 files are imported into the tool, the user can edit the graph interactively
 
 ## Contributing
 
