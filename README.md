@@ -55,6 +55,7 @@ This project solves that by enabling:
 
 ### Visual Analytics Features
 
+<img width="1467" height="721" alt="image" src="https://github.com/user-attachments/assets/0eb0beee-1cf4-431c-9ee3-35acba30480e" />
 #### Infection State Visualization
 - Nodes are color-coded by health status
 - Track disease progression over time
@@ -70,6 +71,7 @@ This project solves that by enabling:
 #### Smart Filtering
 - Focus on selected nodes/links
 - Reduce clutter in dense graphs
+
 
 #### Layout Comparison
 - Compare edited layout with original algorithm output
