@@ -26,8 +26,8 @@ This project solves that by enabling:
 ## Features
 
 ### Intelligent Layout + Human Refinement
-- Automatic layout generation using **MultiDynNos**
-- Manual refinement via **keyframe-based editing**
+- Seamlessly import automatically generated layouts based on the MultiDynNos algorithm (Arleo et al., 2022)
+- Once imported, layouts can be manually adjusted and fine-tuned using a keyframe-based editing system
 
 ### Interactive Temporal Graph Editor
 - Explore dynamic node-link diagrams in a browser
